@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Log New Trip - Park Logger{% endblock %}
+{% block title %}{% if form.instance.pk %}Edit Trip{% else %}Log New Trip{% endif %} - Park Logger{% endblock %}
 
 {% block content %}
-    <h1>Log a New Trip</h1>
+    <h1 class="page-title">{% if form.instance.pk %}Edit Trip: {{ form.instance.name }}{% else %}Log a New Trip{% endif %}</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Save Trip</button>
+        <button type="submit" class="btn btn-cta">Save Trip</button>
     </form>
     <br>
     <a href="{% url 'trips:park_list' %}" class="btn btn-secondary">Cancel</a>
