@@ -1,45 +1,330 @@
-body { font-family: sans-serif; margin: 0; background-color: #f4f4f4; color: #333; }
-nav { margin-bottom: 20px; background-color: #333; padding: 10px 20px; }
-nav a { color: white; text-decoration: none; margin-right: 15px; }
-nav a:hover { text-decoration: underline; }
-h1, h2 { color: #333; }
-ul { list-style-type: none; padding: 0; }
-li { background-color: #fff; border: 1px solid #ddd; margin-bottom: 10px; padding: 15px; border-radius: 5px; }
-li a { text-decoration: none; color: #007bff; font-weight: bold; }
-li a:hover { text-decoration: underline; }
-form p { margin-bottom: 10px; }
-label { display: block; margin-bottom: 5px; font-weight: bold;}
-input[type="text"], input[type="date"], input[type="number"], textarea, select {
-    width: calc(100% - 22px); /* Account for padding and border */
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box; /* So padding doesn't increase width */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+
+:root {
+  --primary-color: #3a5a40; /* Forest Green */
+  --secondary-color: #d2b48c; /* Warm Tan */
+  --cta-color: #e2725b; /* Terracotta */
+  --background-color: #faf0e6; /* Soft Off-White/Light Beige */
+  --content-card-background: #ffffff; /* White */
+  /* --content-card-background-alt: #FDFBF7; */ /* Alternative light beige */
+  --text-color: #5c4033; /* Deep Brown */
+  --header-text-color: #f5f5f5; /* Off-White */
+  /* --header-text-color-alt: #D2B48C; */ /* Light Tan */
+  --primary-font: "Montserrat", sans-serif;
+  --border-color-light: #e0d8cd; /* Lighter version of text or accent */
+  --footer-bg: #2f4833; /* Muted Forest Green */
+  --footer-text-color: var(--header-text-color); /* Off-White for contrast */
+}
+
+body {
+  font-family: var(--primary-font);
+  margin: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6; /* Enhanced line height for readability */
+}
+
+p {
+  /* General paragraph styling */
+  line-height: 1.6;
+  margin-bottom: 1em; /* Spacing for paragraphs */
+}
+
+nav {
+  margin-bottom: 20px;
+  background-color: var(--primary-color);
+  padding: 10px 20px;
+  text-align: center; /* Center nav links for responsive stacking */
+}
+nav a {
+  color: var(--header-text-color);
+  text-decoration: none;
+  margin-right: 15px;
+  display: inline-block; /* Ensure proper spacing and handling */
+  padding: 5px 0;
+}
+nav a:last-child {
+  margin-right: 0;
+} /* Remove margin from last nav link */
+nav a:hover {
+  text-decoration: underline;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--primary-color);
+  font-family: var(--primary-font);
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+} /* Applied Montserrat to all heading levels, adjusted margins */
+
+.page-title {
+  color: var(--text-color); /* Deep Brown for page titles */
+  /* Ensure page titles have appropriate margins if h1-h6 defaults are too small/large */
+  margin-bottom: 0.8em;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  background-color: var(--content-card-background);
+  border: 1px solid var(--border-color-light);
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 5px;
+}
+li a {
+  text-decoration: none;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+li a:hover {
+  text-decoration: underline;
+  color: var(--secondary-color);
+}
+
+/* form p is styled below, ensure it also gets good line-height if not inheriting from body/p */
+form p {
+  margin-bottom: 1em;
+  line-height: 1.6;
+} /* Standardized margin and line height */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+input[type="text"],
+input[type="date"],
+input[type="number"],
+textarea,
+select {
+  width: 100%; /* Make form inputs full width for responsiveness */
+  padding: 10px;
+  margin-bottom: 10px; /* This is 1em from form p, could be redundant or adjusted */
+  border: 1px solid var(--border-color-light);
+  border-radius: 4px;
+  box-sizing: border-box; /* So padding doesn't increase width */
+  font-family: var(--primary-font); /* Ensure form elements use the font */
 }
 textarea {
-    resize: vertical;
-    min-height: 80px;
+  resize: vertical;
+  min-height: 80px;
+  font-family: var(--primary-font); /* Ensure form elements use the font */
 }
-button[type="submit"] { background-color: #28a745; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; }
-button[type="submit"]:hover { background-color: #218838; }
-.container { max-width: 800px; margin: 20px auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-footer { text-align: center; margin-top: 30px; padding: 20px 0; font-size: 0.9em; color: #666; border-top: 1px solid #eee;}
-img { max-width: 100%; height: auto; border-radius: 5px; margin-top: 10px; }
+button[type="submit"] {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: var(--primary-font);
+}
+button[type="submit"]:hover {
+  background-color: #2f4833;
+} /* Darker shade of primary */
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  background: var(--content-card-background);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+} /* Updated box-shadow */
+
+/* Footer styling - applied via .site-footer class in base.html */
+footer {
+  /* Generic footer styles, specific overrides in .site-footer */
+  text-align: center;
+  margin-top: 30px;
+  padding: 20px 0;
+  font-size: 0.9em;
+  color: var(
+    --text-color
+  ); /* Default text color, will be overridden by .site-footer */
+  border-top: 1px solid var(--border-color-light); /* Default border, will be overridden by .site-footer */
+}
+
+.site-footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text-color);
+  border-top: none; /* Remove default border, background provides separation */
+  /* padding, margin-top, text-align, font-size are inherited or can be set here if different */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
 
 /* Utility classes */
-.mt-1 { margin-top: 1rem; }
-.mb-1 { margin-bottom: 1rem; }
-.mb-2 { margin-bottom: 2rem; }
-.btn {
-    display: inline-block;
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
+/* Ensure all utility button classes also use the primary font */
+.mt-1 {
+  margin-top: 1rem;
 }
-.btn-primary { background-color: #007bff; }
-.btn-primary:hover { background-color: #0056b3; }
-.btn-secondary { background-color: #6c757d; }
-.btn-secondary:hover { background-color: #545b62; }
+.mb-1 {
+  margin-bottom: 1rem;
+}
+.mb-2 {
+  margin-bottom: 2rem;
+}
+.btn {
+  display: inline-block;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-family: var(--primary-font);
+  border: none; /* Remove default border for consistency */
+}
+.btn-primary {
+  background-color: var(--primary-color);
+}
+.btn-primary:hover {
+  background-color: #2f4833;
+} /* Darker shade of primary */
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+} /* Text color for secondary button might need to be dark for contrast */
+.btn-secondary:hover {
+  background-color: #b89a72;
+} /* Darker shade of secondary */
+
+/* Call to Action Button */
+.btn-cta {
+  background-color: var(--cta-color);
+  color: #ffffff;
+  padding: 10px 20px; /* Specific padding */
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px; /* Ensure consistency if .btn has different radius */
+}
+.btn-cta:hover {
+  background-color: #d6634e; /* Manually darkened Terracotta */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  color: #ffffff; /* Ensure text color remains white on hover */
+}
+
+/* Empty State Styling */
+.empty-state {
+  text-align: center;
+  padding: 20px;
+  background-color: var(
+    --content-card-background
+  ); /* Optional: if not inside a .container already */
+  border-radius: 8px; /* Optional: if not inside a .container already */
+  margin-top: 20px; /* Optional: for spacing */
+}
+.empty-state-icon {
+  font-size: 3em; /* Adjust size as needed */
+  color: var(--secondary-color); /* Warm Tan */
+  display: block;
+  margin-bottom: 10px;
+}
+.empty-state p {
+  color: var(--text-color); /* Deep Brown */
+  font-size: 1.1em;
+  margin: 0; /* Remove default p margin if icon provides spacing */
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px; /* Adjust padding */
+    margin: 10px auto; /* Keep centered but with less horizontal margin */
+    width: auto; /* Allow container to use more of the screen width */
+  }
+
+  h1,
+  .page-title {
+    /* Target general h1 and specific page-title class */
+    font-size: 1.8em; /* Slightly smaller headings */
+  }
+  h2 {
+    font-size: 1.5em;
+  }
+  h3 {
+    font-size: 1.3em;
+  }
+
+  nav a {
+    display: block; /* Stack nav items */
+    margin-right: 0;
+    margin-bottom: 8px; /* Add some space between stacked nav items */
+    padding: 8px 10px; /* Adjust padding for touch targets */
+  }
+  nav a:last-child {
+    margin-bottom: 0;
+  }
+
+  .btn,
+  .btn-cta,
+  button[type="submit"] {
+    /* Apply to all button types */
+    padding: 10px 18px; /* Slightly smaller buttons */
+    font-size: 0.95em; /* Adjust font size for buttons */
+    width: 100%; /* Make buttons full width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  }
+
+  .btn-secondary {
+    /* Example of specific button adjustment if needed */
+    width: auto; /* Keep secondary buttons like "Cancel" inline if desired */
+  }
+
+  /* Adjust form elements for better usability on smaller screens */
+  input[type="text"],
+  input[type="date"],
+  input[type="number"],
+  textarea,
+  select {
+    font-size: 1em; /* Ensure readable font size */
+  }
+
+  li {
+    padding: 10px; /* Reduce padding in list items */
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 0.95em; /* Slightly reduce base font size for very small screens */
+  }
+
+  h1,
+  .page-title {
+    font-size: 1.5em; /* Further reduce heading size */
+  }
+  h2 {
+    font-size: 1.3em;
+  }
+  h3 {
+    font-size: 1.1em;
+  }
+
+  .container {
+    padding: 10px;
+    margin: 5px auto;
+  }
+
+  .btn,
+  .btn-cta,
+  button[type="submit"] {
+    padding: 12px 15px; /* Ensure good tap area */
+    font-size: 1em; /* Keep button font readable */
+  }
+
+  /* Specific adjustments for form elements if they become too cramped */
+  label {
+    font-size: 0.9em;
+  }
+}

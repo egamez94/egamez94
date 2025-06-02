@@ -4,13 +4,19 @@
 {% block title %}All Parks - Park Logger{% endblock %}
 
 {% block content %}
-    <h1>Parks</h1>
-    <a href="{% url 'trips:trip_add' %}" class="btn btn-primary mb-1">Log a New Trip</a>
-    <ul>
-        {% for park in parks %}
-            <li><a href="{% url 'trips:park_detail' park.pk %}">{{ park.name }}</a></li>
-        {% empty %}
-            <li>No parks have been added yet.</li>
-        {% endfor %}
-    </ul>
+    <h1 class="page-title">Parks</h1>
+    <a href="{% url 'trips:trip_add' %}" class="btn btn-cta mb-1"><span>+</span> Log a New Trip</a>
+    
+    {% if parks %}
+        <ul>
+            {% for park in parks %}
+                <li><a href="{% url 'trips:park_detail' park.pk %}">{{ park.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <div class="empty-state">
+            <span class="empty-state-icon">&#127795;</span> <!-- Unicode tree icon -->
+            <p>No parks have been added yet.</p>
+        </div>
+    {% endif %}
 {% endblock %}
