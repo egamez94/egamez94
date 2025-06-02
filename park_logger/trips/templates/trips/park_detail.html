@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ park.name }} - Park Details{% endblock %}
+
+{% block content %}
+    <h1>{{ park.name }}</h1>
+    <p><strong>Address:</strong> {{ park.address|default:"N/A" }}</p>
+    <p><strong>Amenities:</strong></p>
+    <ul>
+        {% if park.has_public_bathrooms %}<li>Public Bathrooms</li>{% endif %}
+        {% if park.has_playground %}<li>Playground</li>{% endif %}
+        {% if park.has_basketball_court %}<li>Basketball Court</li>{% endif %}
+        {% if not park.has_public_bathrooms and not park.has_playground and not park.has_basketball_court %}
+        <li>No listed amenities.</li>
+        {% endif %}
+    </ul>
+
+    <h2 class="mt-1">Trips to {{ park.name }}</h2>
+    {% if trips %}
+        <ul>
+            {% for trip in trips %}
+                <li>
+                    <strong>Date:</strong> {{ trip.visit_date }}<br>
+                    <strong>Rating:</strong> {{ trip.rating|default:"Not rated" }}<br>
+                    <strong>Comments:</strong> {{ trip.comments|default:"No comments" }}<br>
+                    {% if trip.image %}
+                        <img src="{{ trip.image.url }}" alt="Image for trip to {{ park.name }} on {{ trip.visit_date }}">
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No trips logged for this park yet.</p>
+    {% endif %}
+    <br>
+    <a href="{% url 'trips:park_list' %}" class="btn btn-secondary">Back to Park List</a>
+{% endblock %}

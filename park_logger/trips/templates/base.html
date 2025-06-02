@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Park Logger{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'trips/style.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'trips:park_list' %}">All Parks</a> |
+        <a href="{% url 'trips:trip_add' %}">Log a New Trip</a>
+        <!-- We can add more links here later, e.g., user profile, login/logout -->
+    </nav>
+    <hr>
+    <main>
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </main>
+    <footer>
+        <hr>
+        <p>&copy; Park Logger {% now "Y" %}</p>
+    </footer>
+</body>
+</html>

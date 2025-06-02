@@ -1,0 +1,45 @@
+body { font-family: sans-serif; margin: 0; background-color: #f4f4f4; color: #333; }
+nav { margin-bottom: 20px; background-color: #333; padding: 10px 20px; }
+nav a { color: white; text-decoration: none; margin-right: 15px; }
+nav a:hover { text-decoration: underline; }
+h1, h2 { color: #333; }
+ul { list-style-type: none; padding: 0; }
+li { background-color: #fff; border: 1px solid #ddd; margin-bottom: 10px; padding: 15px; border-radius: 5px; }
+li a { text-decoration: none; color: #007bff; font-weight: bold; }
+li a:hover { text-decoration: underline; }
+form p { margin-bottom: 10px; }
+label { display: block; margin-bottom: 5px; font-weight: bold;}
+input[type="text"], input[type="date"], input[type="number"], textarea, select {
+    width: calc(100% - 22px); /* Account for padding and border */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* So padding doesn't increase width */
+}
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+button[type="submit"] { background-color: #28a745; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; }
+button[type="submit"]:hover { background-color: #218838; }
+.container { max-width: 800px; margin: 20px auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+footer { text-align: center; margin-top: 30px; padding: 20px 0; font-size: 0.9em; color: #666; border-top: 1px solid #eee;}
+img { max-width: 100%; height: auto; border-radius: 5px; margin-top: 10px; }
+
+/* Utility classes */
+.mt-1 { margin-top: 1rem; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 2rem; }
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+.btn-primary { background-color: #007bff; }
+.btn-primary:hover { background-color: #0056b3; }
+.btn-secondary { background-color: #6c757d; }
+.btn-secondary:hover { background-color: #545b62; }
