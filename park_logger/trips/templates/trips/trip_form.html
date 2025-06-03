@@ -7,9 +7,36 @@
     <h1 class="page-title">{% if form.instance.pk %}Edit Trip: {{ form.instance.name }}{% else %}Log a New Trip{% endif %}</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
+
+        <div class="form-group nearby-parks-section">
+            <h3>Find Nearby Parks</h3>
+
+            <div class="form-group">
+                <label for="location_query">Enter City, State, or Zip Code:</label>
+                <input type="text" id="location_query" name="location_query" class="form-control">
+                <button type="button" id="find_parks_by_location_btn" class="btn btn-secondary mt-1 mb-1">Find Parks by Location</button>
+            </div>
+
+            <div class="form-group mt-2 mb-2">
+                <button type="button" id="use_current_location_btn" class="btn btn-secondary">Use My Current Location</button>
+            </div>
+
+            <div class="form-group mt-2">
+                <label for="nearby_parks_dropdown">Suggested Parks:</label>
+                <select id="nearby_parks_dropdown" name="nearby_parks_dropdown" class="form-control" disabled>
+                    <option value="">-- Select a park --</option>
+                </select>
+            </div>
+            <div id="parks_loading_indicator" style="display: none;" class="mt-1">Loading nearby parks...</div>
+            <div id="parks_error_message" style="display: none; color: red;" class="mt-1"></div>
+        </div>
+        <hr class="mb-2 mt-2">
+
         {{ form.as_p }}
         <button type="submit" class="btn btn-cta">Save Trip</button>
     </form>
     <br>
     <a href="{% url 'trips:park_list' %}" class="btn btn-secondary">Cancel</a>
+
+    <script src="{% static 'trips/js/trip_form_enhancements.js' %}" defer></script>
 {% endblock %}
