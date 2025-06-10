@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}My Trips{% endblock %}
+
+{% block content %}
+<h1>My Trips</h1>
+{% if trips %}
+    <ul>
+    {% for trip in trips %}
+        <li>{{ trip.name }} - {{ trip.visit_date|date:"Y-m-d" }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No trips recorded yet.</p>
+{% endif %}
+{% endblock %}
