@@ -30,6 +30,12 @@ class ParkDetailView(DetailView):
         context['trips'] = Trip.objects.filter(park=self.object).order_by('-visit_date')
         return context
 
+class TripListView(ListView):
+    model = Trip
+    template_name = 'trips/trip_list.html'
+    context_object_name = 'trips'
+    queryset = Trip.objects.all().order_by('-visit_date')
+
 class TripCreateView(CreateView):
     model = Trip
     form_class = TripForm
